@@ -7,26 +7,10 @@ import {
 	Image,
 } from 'react-native';
 import { Icon } from '@elements';
+import { categoryImage } from '@util/donationCategory';
 import typography from '@util/typography';
 import { Donation } from './DonationOrClaim.type';
 import styles from './DonationOrClaim.styles';
-
-const getImageForCategory = (category: string) => {
-	switch (category) {
-		case 'Bread':
-			return require('@assets/images/Stock-image-bread.png');
-		case 'Dairy':
-			return require('@assets/images/Stock-image-dairy.png');
-		case 'Hot Meal':
-			return require('@assets/images/Stock-image-meals.png');
-		case 'Produce':
-			return require('@assets/images/Stock-image-produce.png');
-		case 'Protein':
-			return require('@assets/images/Stock-image-protein.png');
-		default:
-			return require('@assets/images/Stock-image-others.png');
-	}
-};
 
 export default ({ donation }: Donation) => {
 	const { navigate } = useNavigation();
@@ -37,7 +21,7 @@ export default ({ donation }: Donation) => {
 		food_name,
 		id,
 	} = donation;
-	const icon = getImageForCategory(category);
+	const icon = categoryImage(category);
 
 	const startTime = new Date(created_at);
 	const now = new Date();
