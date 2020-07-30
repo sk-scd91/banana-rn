@@ -21,16 +21,14 @@ const DashboardScreen = () => {
 	return (
 		<View style={styles.outerContainer}>
 
-			{ resource === 'donations' && (
-				<NavBar
-					showBackButton={false}
-					leftButton="qrCode"
-					showSelector={true}
-					onMap={() => {}}
-					onList={() => {}}
-					position="map"
-				/>
-			)}
+			<NavBar
+				showBackButton={false}
+				leftButton="qrCode"
+				showSelector={resource === 'donations'}
+				onMap={() => {}}
+				onList={() => {}}
+				position="map"
+			/>
 
 			<View style={styles.contentContainer}>
 				<Title text={title} />
