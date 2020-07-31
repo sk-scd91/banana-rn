@@ -10,6 +10,9 @@ export interface Actions {
 	postDonation: () => Promise<StatusCode>;
 	register: () => Promise<StatusCode>;
 	scan: () => Promise<StatusCode>;
+	requestResetToken: () => Promise<StatusCode>;
+	submitResetToken: () => Promise<StatusCode>;
+	submitNewPassword: () => Promise<StatusCode>;
 }
 export { getActiveDonationsForClient } from './getActiveDonationsForClient';
 export { getDonationsOrClaims } from './getDonationsOrClaims';
@@ -18,6 +21,8 @@ export { getLocation } from './getLocation';
 export { logIn, logOut } from './auth';
 export { postDonation } from './postDonation';
 export { cancelDonation } from './cancelDonation';
+export { claimDonation } from './claimDonation';
 export { register } from './register';
 export { scan } from './scan';
 export { updateAlert, clearAlert } from './alert';
+export { requestResetToken, submitResetToken, submitNewPassword } from './passwordReset';
