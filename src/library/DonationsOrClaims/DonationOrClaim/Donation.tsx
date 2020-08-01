@@ -50,7 +50,7 @@ export default ({ donation }: Donation) => {
 						<Text style={typography.h3}>{food_name}</Text>
 						<View style={styles.infoBottomContainer}>
 							{/* TODO: Add pindrop icon. */}
-							<Icon name="arrowDown" size={18} />
+							<Icon name="location" size={18} />
 							<Text style={[ typography.body3, { fontSize: 18, marginHorizontal: 4 } ]}>{organization_name}</Text>
 							<Icon name="distance" size={18} />
 							<Text style={[ typography.body3, { fontSize: 18, marginHorizontal: 4 } ]}>{`${distance.toFixed(1)} mi`}</Text>
