@@ -1,14 +1,18 @@
 import React from 'react';
 import { Text } from 'react-native';
+import { useNavigation } from 'react-navigation-hooks';
+import { NavigationStackProp } from 'react-navigation-stack';
+
 import useGlobal from '@state';
+
 import InfoScreen from '../InfoScreen';
 import AccountSuspendedScreen from '../AccountSuspendedScreen';
 import ApplicationPendingScreen from '../ApplicationPendingScreen';
 import ApplicationApprovedScreen from '../ApplicationApprovedScreen';
 import ApplicationIncompleteScreen from '../ApplicationIncompleteScreen';
-import DashboardScreen from '../DashboardScreen';
 
 export default () => {
+	const { replace } = useNavigation() as NavigationStackProp;
 	const [ state ] = useGlobal();
 	const { user = {} as any, jwt = '' } = state;
 	const { id } = user;
@@ -19,7 +23,9 @@ export default () => {
 		case 'suspended': return <AccountSuspendedScreen />;
 		case 'processing': return <ApplicationPendingScreen />;
 		case 'approved': return <ApplicationApprovedScreen id={id} />;
-		case 'active': return <DashboardScreen />;
+		case 'active':
+			replace('Drawer');
+			return <InfoScreen title="Loading..." />;
 		default: return <InfoScreen title="Login error" nextScreenDestination="LoginScreen" nextScreenTitle="Login" />;
 	}
 };

@@ -28,7 +28,6 @@ import ClaimDetailsScreen from '../screens/ClaimDetailsScreen/ClaimDetailsScreen
 export const MainStack = createStackNavigator(
 	{
 		DashboardScreen,
-		LoginSuccessScreen,
 		DonationScreen,
 		DonorDonationScreen,
 		QRCodeScannerScreen,
@@ -137,6 +136,7 @@ export const Drawer = createDrawerNavigator(
 		contentComponent: MenuDrawer,
 		drawerPosition: 'right',
 		drawerBackgroundColor: colors.NAVY_BLUE,
+		initialRouteName: getEnv().USER_IDENTITY === "donor" ? "DashboardScreen" : "ClaimsScreen",
 	},
 );
 
@@ -144,6 +144,7 @@ export const Drawer = createDrawerNavigator(
 export const FullAppStack = createStackNavigator(
 	{
 		LoginScreen,
+		LoginSuccessScreen,
 		RegistrationScreen,
 		TermsScreen,
 		ContactScreen,
