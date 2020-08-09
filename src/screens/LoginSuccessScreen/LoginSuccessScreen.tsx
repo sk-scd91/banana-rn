@@ -14,7 +14,7 @@ import ApplicationIncompleteScreen from '../ApplicationIncompleteScreen';
 export default () => {
 	const { replace } = useNavigation() as NavigationStackProp;
 	const [ state ] = useGlobal();
-	const { user = {} as any, jwt = '' } = state;
+	const { user = {} as any, jwt = '', userIdentity } = state;
 	const { id } = user;
 	if (!jwt || !user) { return <Text>Loading...</Text>; }
 
@@ -26,6 +26,6 @@ export default () => {
 		case 'active':
 			replace('Drawer');
 			return <InfoScreen title="Loading..." />;
-		default: return <InfoScreen title="Login error" nextScreenDestination="LoginScreen" nextScreenTitle="Login" />;
+			default: return <InfoScreen title="Login error" nextScreenDestination="LoginScreen" nextScreenTitle="Login" />;
 	}
 };
